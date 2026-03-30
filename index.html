@@ -1279,5 +1279,15 @@ La marca podrá actualizar las condiciones del programa cuando corresponda.
     window.addEventListener('load', loadBootstrap);
     window.addEventListener('pageshow', () => showPageLoader(false));
   </script>
+
+<script>
+function reportHeight() {
+  var h = document.documentElement.scrollHeight;
+  window.parent.postMessage({ height: h }, '*');
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+setInterval(reportHeight, 500);
+</script>
 </body>
 </html>
